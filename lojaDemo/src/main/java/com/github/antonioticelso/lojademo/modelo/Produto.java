@@ -1,7 +1,8 @@
 package com.github.antonioticelso.lojademo.modelo;
 
-import com.github.antonioticelso.lojademo.util.Categoria;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,6 +11,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "produtos")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Produto {
 
     @Id
@@ -22,7 +25,7 @@ public class Produto {
     private LocalDate dataCadastro = LocalDate.now();
     private LocalDate dataUpdate = LocalDate.now();
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
     private Categoria categoria;
 
 }

@@ -7,21 +7,21 @@ import lombok.AllArgsConstructor;
 import javax.persistence.EntityManager;
 
 @AllArgsConstructor
-public class ProdutoImpl {
+public class CategoriaImpl {
 
     private EntityManager manager;
 
-    public void cadastrar(Produto produto) {
-        this.manager.persist(produto);
+    public void cadastrar(Categoria categoria) {
+        this.manager.persist(categoria);
     }
 
-    public void atualizar(Produto produto) {
-        this.manager.merge(produto);
+    public void atualizar(Categoria categoria) {
+        this.manager.merge(categoria);
     }
 
-    public void remover(Produto produto) {
-        atualizar(produto);
-        this.manager.remove(produto);
+    public void remover(Categoria categoria) {
+        atualizar(categoria);
+        this.manager.remove(categoria);
     }
 
 }
