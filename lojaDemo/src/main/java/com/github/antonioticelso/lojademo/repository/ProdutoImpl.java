@@ -5,6 +5,7 @@ import com.github.antonioticelso.lojademo.modelo.Produto;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -42,12 +43,12 @@ public class ProdutoImpl {
                 .getResultList();
     }
 
-    public List<Produto> buscarPorNomeCategoria(String nome) {
-//        String jpql = "SELECT p FROM Produto p WHERE p.name = ?1";
-        String jpql = "SELECT p FROM Produto p WHERE p.categoria.nome = :nome";
-        return manager.createQuery(jpql, Produto.class)
+    public BigDecimal buscarNomeEDataProduto(String nome) {
+        String jpql = "SELECT p.preco FROM Produto p WHERE p.name = :nome";
+        return manager.createQuery(jpql, BigDecimal.class)
                 .setParameter("nome", nome)
-                .getResultList();
+                .getSingleResult();
     }
+
 
 }

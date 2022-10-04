@@ -26,10 +26,10 @@ public class LojaDemoApplication {
 		list.forEach(pr -> System.out.println(pr.getName()));
 
 		List<Produto> todos = produtoImpl.buscarPorNome("Xiaomi Redmi Pro 8");
-		list.forEach(pr -> System.out.println(pr.getName()));
+		todos.forEach(pr -> System.out.println(pr.getName()));
 
-		List<Produto> todaCategoria = produtoImpl.buscarPorNomeCategoria("Xiaomi Redmi Pro 8");
-		list.forEach(pr -> System.out.println(pr.getName()));
+		BigDecimal produtoCategoria = produtoImpl.buscarNomeEDataProduto("Xiaomi Redmi Pro 8");
+		System.out.println(produtoCategoria);
 
 	}
 
