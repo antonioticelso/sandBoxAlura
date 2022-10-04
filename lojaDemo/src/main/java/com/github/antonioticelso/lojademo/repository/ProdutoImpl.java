@@ -1,6 +1,5 @@
 package com.github.antonioticelso.lojademo.repository;
 
-import com.github.antonioticelso.lojademo.modelo.Categoria;
 import com.github.antonioticelso.lojademo.modelo.Produto;
 import lombok.AllArgsConstructor;
 
