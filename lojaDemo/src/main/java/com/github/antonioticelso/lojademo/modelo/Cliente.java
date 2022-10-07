@@ -1,6 +1,5 @@
 package com.github.antonioticelso.lojademo.modelo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +12,6 @@ import javax.persistence.GenerationType;
 @Entity
 @Table(name = "clientes")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Cliente {
 
@@ -23,4 +21,10 @@ public class Cliente {
 
     private String nome;
     private String cpf;
+
+    public Cliente(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
+
 }
