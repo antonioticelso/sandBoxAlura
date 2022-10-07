@@ -1,21 +1,16 @@
 package com.github.antonioticelso.lojademo.modelo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "pedidos")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Pedido {
 
@@ -26,6 +21,20 @@ public class Pedido {
 
     @ManyToOne
     private Cliente cliente;
+
+    @Column(name = "valor_total")
     private double valorTotal;
+
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private List<ItemPedido> items = new ArrayList<>();
+
+    public void adicionarItem(ItemPedido itemPedido) {
+        itemPedido.setPedido(this);
+        this.items.add(itemPedido);
+    }
+
+    public Pedido(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
 }
