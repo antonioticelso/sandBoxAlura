@@ -34,6 +34,10 @@ public class LojaDemoApplicationPedido {
 		pedidoImp.cadastrar(pedido);
 
 		manager.getTransaction().commit();
+
+		BigDecimal totalVendido = pedidoImp.valorTotalVendido();
+		System.out.println("Valor total vendido: " + totalVendido);
+
 		manager.close();
 
 

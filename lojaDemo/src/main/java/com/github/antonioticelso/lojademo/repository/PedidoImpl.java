@@ -4,6 +4,7 @@ import com.github.antonioticelso.lojademo.modelo.Pedido;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 
 @AllArgsConstructor
 public class PedidoImpl {
@@ -16,6 +17,11 @@ public class PedidoImpl {
 
     public void atualizar(Pedido pedido) {
         this.manager.merge(pedido);
+    }
+
+    public BigDecimal valorTotalVendido() {
+        String jpql = "SELECT SUM(p.valorTotal) FROM Pedido p";
+        return manager.createQuery(jpql, BigDecimal.class).getSingleResult();
     }
 
 //    public void remover(Produto produto) {

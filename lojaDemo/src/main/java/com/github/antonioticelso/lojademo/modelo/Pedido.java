@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Pedido {
     private Cliente cliente;
 
     @Column(name = "valor_total")
-    private double valorTotal;
+    private BigDecimal valorTotal = BigDecimal.ZERO;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> items = new ArrayList<>();
@@ -31,6 +32,8 @@ public class Pedido {
     public void adicionarItem(ItemPedido itemPedido) {
         itemPedido.setPedido(this);
         this.items.add(itemPedido);
+        this.valorTotal = this.valorTotal.add(itemPedido.getValor());
+
     }
 
     public Pedido(Cliente cliente) {
