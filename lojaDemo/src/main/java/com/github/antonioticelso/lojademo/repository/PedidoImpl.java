@@ -1,10 +1,12 @@
 package com.github.antonioticelso.lojademo.repository;
 
 import com.github.antonioticelso.lojademo.modelo.Pedido;
+import com.github.antonioticelso.lojademo.modelo.vo.RelatorioDeVendasVo;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 @AllArgsConstructor
 public class PedidoImpl {
@@ -22,6 +24,15 @@ public class PedidoImpl {
     public BigDecimal valorTotalVendido() {
         String jpql = "SELECT SUM(p.valorTotal) FROM Pedido p";
         return manager.createQuery(jpql, BigDecimal.class).getSingleResult();
+    }
+
+    public List<RelatorioDeVendasVo> relatorioDeVendas() {
+        String jpql = "SELECT new com.github.antonioticelso.lojademo.modelo.vo.RelatorioDeVendasVo(" +
+                "produto.name, SUM(item.quantidade), MAX(pedido.data), categoria.nome)" +
+                " FROM Pedido pedido JOIN pedido.items item JOIN item.produto produto JOIN produto.categoria categoria" +
+                " GROUP BY produto.name ORDER BY item.quantidade DESC";
+        return manager.createQuery(jpql, RelatorioDeVendasVo.class).getResultList();
+
     }
 
 //    public void remover(Produto produto) {

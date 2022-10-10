@@ -33,4 +33,13 @@ public class Produto {
     @ManyToOne
     private Categoria categoria;
 
+    public Produto(String name, String descricao, BigDecimal preco, LocalDate dataCadastro, LocalDate dataUpdate, Categoria categoria) {
+        this.name = name;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.dataCadastro = dataCadastro;
+        this.dataUpdate = dataUpdate;
+        this.categoria = categoria;
+    }
+
 }
