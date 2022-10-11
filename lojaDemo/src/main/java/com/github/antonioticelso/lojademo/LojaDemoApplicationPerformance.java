@@ -20,6 +20,16 @@ public class LojaDemoApplicationPerformance {
 		popolarDB();
 		EntityManager manager = JPAUtil.getEntityManager();
 
+		Pedido pedido = manager.find(Pedido.class, 1l);
+		System.out.println(pedido.getData());
+		System.out.println(pedido.getItems().size());
+
+		PedidoImpl pedidoImpl = new PedidoImpl(manager);
+		Pedido pedido1 = pedidoImpl.buscarPedidoComCliente(1l);
+
+		manager.close();
+
+		System.out.println(pedido1.getCliente().getNome() + " - " + pedido1.getCliente().getCpf());
 
 	}
 

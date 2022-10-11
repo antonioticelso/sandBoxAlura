@@ -35,6 +35,13 @@ public class PedidoImpl {
 
     }
 
+    public Pedido buscarPedidoComCliente(Long id) {
+        String jpql = "SELECT p FROM Pedido p JOIN FETCH p.cliente WHERE p.id = ?1";
+        return manager.createQuery(jpql, Pedido.class)
+                .setParameter(1, id)
+                .getSingleResult();
+    }
+
 //    public void remover(Produto produto) {
 //        atualizar(produto);
 //        this.manager.remove(produto);
@@ -57,12 +64,6 @@ public class PedidoImpl {
 //                .getResultList();
 //    }
 //
-//    public BigDecimal buscarNomeEDataProduto(String nome) {
-//        String jpql = "SELECT p.preco FROM Produto p WHERE p.name = :nome";
-//        return manager.createQuery(jpql, BigDecimal.class)
-//                .setParameter("nome", nome)
-//                .getSingleResult();
-//    }
 
 
 }
