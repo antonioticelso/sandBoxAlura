@@ -17,6 +17,13 @@ public class LojaDemoApplicationPerformance {
 
 	public static void main(String[] args) {
 //		SpringApplication.run(LojaDemoApplication.class, args);
+		popolarDB();
+		EntityManager manager = JPAUtil.getEntityManager();
+
+
+	}
+
+	private static void popolarDB() {
 		cadastrarProduto();
 		EntityManager manager = JPAUtil.getEntityManager();
 
@@ -50,8 +57,6 @@ public class LojaDemoApplicationPerformance {
 		relatorioVendas.forEach(System.out::println);
 
 		manager.close();
-
-
 	}
 
 	private static void cadastrarProduto() {
