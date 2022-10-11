@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
 
     @Id
@@ -28,7 +29,8 @@ public class Produto {
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
 
-    public Produto(String name, String descricao, BigDecimal preco, LocalDate dataCadastro, LocalDate dataUpdate, Categoria categoria) {
+    public Produto(String name, String descricao, BigDecimal preco, LocalDate dataCadastro,
+                   LocalDate dataUpdate, Categoria categoria) {
         this.name = name;
         this.descricao = descricao;
         this.preco = preco;

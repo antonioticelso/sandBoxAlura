@@ -5,12 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Informatica extends Produto {
+@Table(name = "eletronicos")
+public class Eletronico extends Produto {
 
     private String marca;
     private String modelo;
