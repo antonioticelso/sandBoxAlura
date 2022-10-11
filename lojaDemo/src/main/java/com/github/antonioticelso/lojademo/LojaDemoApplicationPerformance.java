@@ -20,6 +20,8 @@ public class LojaDemoApplicationPerformance {
 		popolarDB();
 		EntityManager manager = JPAUtil.getEntityManager();
 
+		ProdutoImpl produtoImpl = new ProdutoImpl(manager);
+
 		Pedido pedido = manager.find(Pedido.class, 1l);
 		System.out.println(pedido.getData());
 		System.out.println(pedido.getItems().size());
@@ -30,6 +32,9 @@ public class LojaDemoApplicationPerformance {
 		manager.close();
 
 		System.out.println(pedido1.getCliente().getNome() + " - " + pedido1.getCliente().getCpf());
+
+//		produtoImpl.buscarPorParametros("Eletrolux", null,  null);
+//		produtoImpl.buscarPorParametrosOpcionais("Eletrolux", null,  null);
 
 	}
 
