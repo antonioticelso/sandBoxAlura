@@ -3,25 +3,24 @@ package com.github.antonioticelso.lojademo.modelo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "categorias")
 @Data
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Categoria {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String nome;
+    @EmbeddedId
+    private CategoriaId id;
 
     public Categoria(String nome) {
-        this.nome = nome;
+        this.id = new CategoriaId(nome, "xpto");
     }
+
+    public String getNome() {
+        return this.id.getNome();
+    }
+
 }
