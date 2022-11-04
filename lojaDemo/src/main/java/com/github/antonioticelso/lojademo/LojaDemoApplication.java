@@ -39,8 +39,7 @@ public class LojaDemoApplication {
 		ProdutoImpl produtoImpl = new ProdutoImpl(manager);
 		CategoriaImpl categoriaImpl = new CategoriaImpl(manager);
 
-		Categoria celulares = new Categoria();
-		celulares.setNome("CELULARES");
+		Categoria celulares = new Categoria("CELULARES");
 
 		Produto celular = new Produto();
 		celular.setName("Xiaomi Redmi Pro 8");

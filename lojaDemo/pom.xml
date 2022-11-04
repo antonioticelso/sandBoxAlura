@@ -12,6 +12,7 @@
 	<groupId>com.github.antonioticelso</groupId>
 	<artifactId>lojaDemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>lojaDemo</name>
 	<description>lojaDemo</description>
 
@@ -29,7 +30,6 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>2.1.214</version>
-<!--			<scope>test</scope>-->
 		</dependency>
 
 		<dependency>
